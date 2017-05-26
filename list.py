@@ -1,30 +1,37 @@
 from tkinter import *
 from tkinter import ttk
 
+
 class List:
-    tree = None
 
     def __init__(self, listframe):
         self.listframe = listframe
 
         # set column
-        List.tree = ttk.Treeview(listframe, columns=('name', 'logdata', 'date',  'size'))
+        self.tree = ttk.Treeview(listframe, columns=('name', 'logdata', 'date', 'size'))
 
         # set column name
-        List.tree.heading('#0', text='ID')
-        List.tree.column('#0', minwidth=50, width=50)
-        List.tree.heading('#1', text='Name')
-        List.tree.heading('#2', text='Datei')
-        List.tree.heading('#3', text='Datum')
-        List.tree.heading('#4', text='Grösse')
+        self.tree.heading('#0', text='ID')
+        self.tree.column('#0', minwidth=50, width=50)
+
+        self.tree.heading('#1', text='Name')
+        self.tree.column('#1', minwidth=100, width=100)
+
+        self.tree.heading('#2', text='Datei')
+        self.tree.column('#2', minwidth=100, width=100)
+
+        self.tree.heading('#3', text='Datum')
+        self.tree.column('#3', minwidth=100, width=100)
+
+        self.tree.heading('#4', text='Grösse')
+        self.tree.column('#4', minwidth=100, width=100)
 
         # return tree object
-        self.getTree()
+        self.gettree()
 
     def insert_data(self, id, progname, name, date, size):
-        List.tree.insert('', 'end', text=id,  value=(progname,name,date,size))
+        self.tree.insert('', 'end', text=id, value=(progname, name, date, size))
 
-    def getTree(self):
-        List.tree.pack(fill=X)
-        return List.tree
-
+    def gettree(self):
+        self.tree.pack(fill=X)
+        return self.tree
