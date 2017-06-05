@@ -27,11 +27,11 @@ class List:
         self.tree.column('#4', minwidth=100, width=100)
 
         # return tree object
-        self.gettree()
+        self.get_tree()
 
     def insert_data(self, id, progname, name, date, size):
         self.tree.insert('', 'end', text=id, value=(progname, name, date, size))
 
-    def gettree(self):
+    def get_tree(self):
         self.tree.pack(fill=X)
         return self.tree
