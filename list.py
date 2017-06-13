@@ -17,8 +17,8 @@ class List:
         self.tree.heading('#1', text='Name')
         self.tree.column('#1', minwidth=100, width=100)
 
-        self.tree.heading('#2', text='Datei')
-        self.tree.column('#2', minwidth=100, width=100)
+        self.tree.heading('#2', text='Dateipfad')
+        self.tree.column('#2', minwidth=100, width=350)
 
         self.tree.heading('#3', text='Datum')
         self.tree.column('#3', minwidth=100, width=100)
@@ -29,8 +29,8 @@ class List:
         # return tree object
         self.get_tree()
 
-    def insert_data(self, id, progname, name, date, size):
-        self.tree.insert('', 'end', text=id, value=(progname, name, date, size))
+    def insert_data(self, id, progname, path, date, size):
+        self.tree.insert('', 'end', text=id, value=(progname, path, date, size))
 
     def get_tree(self):
         self.tree.pack(fill=X)

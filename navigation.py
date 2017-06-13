@@ -32,7 +32,7 @@ class Navigation:
         self.controller.add()
 
     def set_usage(self, size):
-        self.usage.config(text=size)
+        self.usage.config(text=str(size)+"KB")
 
     def set_file_count(self, count):
         self.filecount.config(text=count)

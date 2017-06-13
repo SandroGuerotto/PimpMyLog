@@ -3,7 +3,6 @@ from tkinter import filedialog
 import os
 
 
-
 class PopupFile:
 
     def __init__(self, root):
