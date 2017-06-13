@@ -1,5 +1,4 @@
 from tkinter import *
-from tkinter import filedialog
 
 
 class Navigation:
@@ -32,9 +31,11 @@ class Navigation:
     def add(self):
         self.controller.add()
 
-    def setusage(self, size):
+    def set_usage(self, size):
         self.usage.config(text=size)
 
-    def setfilecount(self, count):
+    def set_file_count(self, count):
         self.filecount.config(text=count)
+
+
 

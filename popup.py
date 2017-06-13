@@ -1,5 +1,7 @@
 from tkinter import *
 from tkinter import filedialog
+import os
+
 
 
 class PopupFile:
@@ -11,10 +13,10 @@ class PopupFile:
         # first row
         self.lbl_path = Label(self.top, text="Dateipfad:")
         self.lbl_path.grid(row=0, column=0, ipadx=30, pady=20)
-
+        # path field and browse button
         self.e_path = Entry(self.top,  width=80)
         self.e_path.grid(row=0, column=1, padx=0)
-        self.btn_browse = Button(self.top, text="...", command=self.opendialog)
+        self.btn_browse = Button(self.top, text="...", command=self.open_dialog)
         self.btn_browse.grid(row=0, column=2, padx=10, ipadx=5)
 
         Label(self.top, text="").grid(row=0, column=3, padx=20)
@@ -42,9 +44,11 @@ class PopupFile:
         self.top.grab_release()
         self.top.quit()
 
-    def getattr(self):
+    def get_attribute(self):
         return self.e_path.get(), self.e_name.get()
 
-    def opendialog(self):
+    def open_dialog(self):
         filename = filedialog.askopenfilename(parent=self.top)
         self.e_path.insert(0, filename)
+        # get file name and display on entry field
+        self.e_name.insert(END, os.path.splitext(os.path.basename(filename))[0] )
