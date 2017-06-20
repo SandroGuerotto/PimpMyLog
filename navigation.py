@@ -32,10 +32,17 @@ class Navigation:
         self.controller.add()
 
     def set_usage(self, size):
-        self.usage.config(text=str(size)+"KB")
+        self.usage.config(text=str(self.hbytes(size)))
 
     def set_file_count(self, count):
         self.filecount.config(text=count)
+
+    def hbytes(self, num):
+        for x in ['bytes', 'KB', 'MB', 'GB']:
+            if num < 1024.0:
+                return "%3.1f%s" % (num, x)
+            num /= 1024.0
+        return "%3.1f%s" % (num, 'TB')
 
 
 

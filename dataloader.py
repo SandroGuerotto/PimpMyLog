@@ -2,6 +2,7 @@ import pickle
 import os, time, stat
 from stat import * # ST_SIZE
 
+
 # Speichert eine List mit Log-Files in ein file
 def write_logfile_list_in_file(name, path):
     # Erstellt ein neues File Objekt
@@ -43,6 +44,8 @@ def write_logfile_list_in_file(name, path):
         # file objekt schliessen
         logfile_list_object_write.close()
 
+        return file.size, file.date, file.id
+
 
 def read_logfile_list_from_file():
     if os.path.isfile("log_files_list.txt"):
@@ -57,13 +60,13 @@ def read_logfile_list_from_file():
                 pass
     else:
         open("log_files_list.txt", "wb")
-    return None
+    return list()
 
 
 # Gibt den Logfile Inhalt zurück
 def get_logfile_content(path):
     # Öffnet das das log file "read"
-    with open(path, "r") as logfile_object:
+    with open(path, "rb") as logfile_object:
         # Gibt Fileinhalt zurück
         return logfile_object.read()
 

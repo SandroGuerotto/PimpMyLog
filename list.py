@@ -21,7 +21,7 @@ class List:
         self.tree.column('#2', minwidth=100, width=350)
 
         self.tree.heading('#3', text='Datum')
-        self.tree.column('#3', minwidth=100, width=100)
+        self.tree.column('#3', minwidth=100, width=150)
 
         self.tree.heading('#4', text='Grösse')
         self.tree.column('#4', minwidth=100, width=100)
@@ -30,8 +30,15 @@ class List:
         self.get_tree()
 
     def insert_data(self, id, progname, path, date, size):
-        self.tree.insert('', 'end', text=id, value=(progname, path, date, size))
+        self.tree.insert('', 'end', text=id, value=(progname, path, date, self.hbytes(size)))
 
     def get_tree(self):
         self.tree.pack(fill=X)
         return self.tree
+
+    def hbytes(self, num):
+        for x in ['bytes', 'KB', 'MB', 'GB']:
+            if num < 1024.0:
+                return "%3.1f%s" % (num, x)
+            num /= 1024.0
+        return "%3.1f%s" % (num, 'TB')
